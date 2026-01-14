@@ -1,0 +1,222 @@
+0 verbose cli D:\20248\nodejs\node.exe D:\20248\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.6.2
+2 info using node@v24.12.0
+3 silly config load:file:D:\20248\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\48626\Desktop\mo\second-hand-trading-main\222\frontend\.npmrc
+5 silly config load:file:C:\Users\48626\.npmrc
+6 silly config load:file:D:\20248\nodejs\node_global\etc\npmrc
+7 verbose title npm install vue-i18n
+8 verbose argv "install" "vue-i18n" "--cache" ".npm-cache"
+9 verbose logfile logs-max:10 dir:C:\Users\48626\Desktop\mo\second-hand-trading-main\222\frontend\.npm-cache\_logs\2025-12-29T15_15_16_522Z-
+10 verbose logfile C:\Users\48626\Desktop\mo\second-hand-trading-main\222\frontend\.npm-cache\_logs\2025-12-29T15_15_16_522Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules
+14 silly idealTree buildDeps
+15 silly fetch manifest vue-i18n@*
+16 silly packumentCache full:https://registry.npmmirror.com/vue-i18n cache-miss
+17 http fetch GET 200 https://registry.npmmirror.com/vue-i18n 425ms (cache miss)
+18 silly packumentCache full:https://registry.npmmirror.com/vue-i18n set size:212709 disposed:false
+19 silly fetch manifest vue@^3.4.0
+20 silly packumentCache full:https://registry.npmmirror.com/vue cache-miss
+21 http fetch GET 200 https://registry.npmmirror.com/vue 38ms (cache revalidated)
+22 silly packumentCache full:https://registry.npmmirror.com/vue set size:2045993 disposed:false
+23 silly fetch manifest typescript@*
+24 silly packumentCache full:https://registry.npmmirror.com/typescript cache-miss
+25 http fetch GET 200 https://registry.npmmirror.com/typescript 37ms (cache revalidated)
+26 silly packumentCache full:https://registry.npmmirror.com/typescript set size:14302776 disposed:false
+27 silly placeDep ROOT vue-i18n@11.2.7 OK for: campus-secondhand-frontend@1.0.0 want: *
+28 silly fetch manifest @intlify/core-base@11.2.7
+29 silly packumentCache full:https://registry.npmmirror.com/@intlify%2fcore-base cache-miss
+30 silly fetch manifest @intlify/shared@11.2.7
+31 silly packumentCache full:https://registry.npmmirror.com/@intlify%2fshared cache-miss
+32 http fetch GET 200 https://registry.npmmirror.com/@intlify%2fcore-base 58ms (cache miss)
+33 silly packumentCache full:https://registry.npmmirror.com/@intlify%2fcore-base set size:106205 disposed:false
+34 http fetch GET 200 https://registry.npmmirror.com/@intlify%2fshared 368ms (cache miss)
+35 silly packumentCache full:https://registry.npmmirror.com/@intlify%2fshared set size:98754 disposed:false
+36 silly placeDep ROOT @intlify/core-base@11.2.7 OK for: vue-i18n@11.2.7 want: 11.2.7
+37 silly placeDep ROOT @intlify/shared@11.2.7 OK for: vue-i18n@11.2.7 want: 11.2.7
+38 silly fetch manifest @intlify/message-compiler@11.2.7
+39 silly packumentCache full:https://registry.npmmirror.com/@intlify%2fmessage-compiler cache-miss
+40 http fetch GET 200 https://registry.npmmirror.com/@intlify%2fmessage-compiler 66ms (cache miss)
+41 silly packumentCache full:https://registry.npmmirror.com/@intlify%2fmessage-compiler set size:101973 disposed:false
+42 silly placeDep ROOT @intlify/message-compiler@11.2.7 OK for: @intlify/core-base@11.2.7 want: 11.2.7
+43 silly reify moves {}
+44 silly audit bulk request {
+44 silly audit   '@babel/helper-string-parser': [ '7.27.1' ],
+44 silly audit   '@babel/helper-validator-identifier': [ '7.28.5' ],
+44 silly audit   '@babel/parser': [ '7.28.5' ],
+44 silly audit   '@babel/types': [ '7.28.5' ],
+44 silly audit   '@ctrl/tinycolor': [ '3.6.1' ],
+44 silly audit   '@element-plus/icons-vue': [ '2.3.2' ],
+44 silly audit   '@esbuild/aix-ppc64': [ '0.21.5' ],
+44 silly audit   '@esbuild/android-arm': [ '0.21.5' ],
+44 silly audit   '@esbuild/android-arm64': [ '0.21.5' ],
+44 silly audit   '@esbuild/android-x64': [ '0.21.5' ],
+44 silly audit   '@esbuild/darwin-arm64': [ '0.21.5' ],
+44 silly audit   '@esbuild/darwin-x64': [ '0.21.5' ],
+44 silly audit   '@esbuild/freebsd-arm64': [ '0.21.5' ],
+44 silly audit   '@esbuild/freebsd-x64': [ '0.21.5' ],
+44 silly audit   '@esbuild/linux-arm': [ '0.21.5' ],
+44 silly audit   '@esbuild/linux-arm64': [ '0.21.5' ],
+44 silly audit   '@esbuild/linux-ia32': [ '0.21.5' ],
+44 silly audit   '@esbuild/linux-loong64': [ '0.21.5' ],
+44 silly audit   '@esbuild/linux-mips64el': [ '0.21.5' ],
+44 silly audit   '@esbuild/linux-ppc64': [ '0.21.5' ],
+44 silly audit   '@esbuild/linux-riscv64': [ '0.21.5' ],
+44 silly audit   '@esbuild/linux-s390x': [ '0.21.5' ],
+44 silly audit   '@esbuild/linux-x64': [ '0.21.5' ],
+44 silly audit   '@esbuild/netbsd-x64': [ '0.21.5' ],
+44 silly audit   '@esbuild/openbsd-x64': [ '0.21.5' ],
+44 silly audit   '@esbuild/sunos-x64': [ '0.21.5' ],
+44 silly audit   '@esbuild/win32-arm64': [ '0.21.5' ],
+44 silly audit   '@esbuild/win32-ia32': [ '0.21.5' ],
+44 silly audit   '@esbuild/win32-x64': [ '0.21.5' ],
+44 silly audit   '@floating-ui/core': [ '1.7.3' ],
+44 silly audit   '@floating-ui/dom': [ '1.7.4' ],
+44 silly audit   '@floating-ui/utils': [ '0.2.10' ],
+44 silly audit   '@jridgewell/sourcemap-codec': [ '1.5.5' ],
+44 silly audit   '@sxzz/popperjs-es': [ '2.11.7' ],
+44 silly audit   '@rollup/rollup-android-arm-eabi': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-android-arm64': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-darwin-arm64': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-darwin-x64': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-freebsd-arm64': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-freebsd-x64': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-linux-arm-gnueabihf': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-linux-arm-musleabihf': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-linux-arm64-gnu': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-linux-arm64-musl': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-linux-loong64-gnu': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-linux-ppc64-gnu': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-linux-riscv64-gnu': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-linux-riscv64-musl': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-linux-s390x-gnu': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-linux-x64-gnu': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-linux-x64-musl': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-openharmony-arm64': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-win32-arm64-msvc': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-win32-ia32-msvc': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-win32-x64-gnu': [ '4.54.0' ],
+44 silly audit   '@rollup/rollup-win32-x64-msvc': [ '4.54.0' ],
+44 silly audit   '@types/estree': [ '1.0.8' ],
+44 silly audit   '@types/lodash': [ '4.17.21' ],
+44 silly audit   '@types/lodash-es': [ '4.17.12' ],
+44 silly audit   '@types/web-bluetooth': [ '0.0.20' ],
+44 silly audit   '@vitejs/plugin-vue': [ '5.2.4' ],
+44 silly audit   '@vue/compiler-core': [ '3.5.26' ],
+44 silly audit   '@vue/compiler-dom': [ '3.5.26' ],
+44 silly audit   '@vue/compiler-sfc': [ '3.5.26' ],
+44 silly audit   '@vue/compiler-ssr': [ '3.5.26' ],
+44 silly audit   '@vue/devtools-api': [ '6.6.4' ],
+44 silly audit   '@vue/reactivity': [ '3.5.26' ],
+44 silly audit   '@vue/runtime-core': [ '3.5.26' ],
+44 silly audit   '@vue/runtime-dom': [ '3.5.26' ],
+44 silly audit   '@vue/server-renderer': [ '3.5.26' ],
+44 silly audit   '@vue/shared': [ '3.5.26' ],
+44 silly audit   '@vueuse/core': [ '10.11.1' ],
+44 silly audit   '@vueuse/metadata': [ '10.11.1' ],
+44 silly audit   '@vueuse/shared': [ '10.11.1' ],
+44 silly audit   'async-validator': [ '4.2.5' ],
+44 silly audit   asynckit: [ '0.4.0' ],
+44 silly audit   axios: [ '1.13.2' ],
+44 silly audit   'call-bind-apply-helpers': [ '1.0.2' ],
+44 silly audit   'combined-stream': [ '1.0.8' ],
+44 silly audit   csstype: [ '3.2.3' ],
+44 silly audit   dayjs: [ '1.11.19' ],
+44 silly audit   'delayed-stream': [ '1.0.0' ],
+44 silly audit   'dunder-proto': [ '1.0.1' ],
+44 silly audit   'element-plus': [ '2.13.0' ],
+44 silly audit   entities: [ '7.0.0' ],
+44 silly audit   'es-define-property': [ '1.0.1' ],
+44 silly audit   'es-errors': [ '1.3.0' ],
+44 silly audit   'es-object-atoms': [ '1.1.1' ],
+44 silly audit   'es-set-tostringtag': [ '2.1.0' ],
+44 silly audit   esbuild: [ '0.21.5' ],
+44 silly audit   'estree-walker': [ '2.0.2' ],
+44 silly audit   'follow-redirects': [ '1.15.11' ],
+44 silly audit   'form-data': [ '4.0.5' ],
+44 silly audit   fsevents: [ '2.3.3' ],
+44 silly audit   'function-bind': [ '1.1.2' ],
+44 silly audit   'get-intrinsic': [ '1.3.0' ],
+44 silly audit   'get-proto': [ '1.0.1' ],
+44 silly audit   gopd: [ '1.2.0' ],
+44 silly audit   'has-symbols': [ '1.1.0' ],
+44 silly audit   'has-tostringtag': [ '1.0.2' ],
+44 silly audit   hasown: [ '2.0.2' ],
+44 silly audit   lodash: [ '4.17.21' ],
+44 silly audit   'lodash-es': [ '4.17.22' ],
+44 silly audit   'lodash-unified': [ '1.0.3' ],
+44 silly audit   'magic-string': [ '0.30.21' ],
+44 silly audit   'math-intrinsics': [ '1.1.0' ],
+44 silly audit   'memoize-one': [ '6.0.0' ],
+44 silly audit   'mime-db': [ '1.52.0' ],
+44 silly audit   'mime-types': [ '2.1.35' ],
+44 silly audit   nanoid: [ '3.3.11' ],
+44 silly audit   'normalize-wheel-es': [ '1.2.0' ],
+44 silly audit   picocolors: [ '1.1.1' ],
+44 silly audit   pinia: [ '2.3.1' ],
+44 silly audit   postcss: [ '8.5.6' ],
+44 silly audit   'proxy-from-env': [ '1.1.0' ],
+44 silly audit   rollup: [ '4.54.0' ],
+44 silly audit   'source-map-js': [ '1.2.1' ],
+44 silly audit   vite: [ '5.4.21' ],
+44 silly audit   vue: [ '3.5.26' ],
+44 silly audit   'vue-demi': [ '0.14.10' ],
+44 silly audit   'vue-router': [ '4.6.4' ],
+44 silly audit   'vue-i18n': [ '11.2.7' ],
+44 silly audit   '@intlify/core-base': [ '11.2.7' ],
+44 silly audit   '@intlify/shared': [ '11.2.7' ],
+44 silly audit   '@intlify/message-compiler': [ '11.2.7' ]
+44 silly audit }
+45 http cache vue-i18n@https://registry.npmmirror.com/vue-i18n/-/vue-i18n-11.2.7.tgz 0ms (cache hit)
+46 silly tarball no local data for vue-i18n@https://registry.npmmirror.com/vue-i18n/-/vue-i18n-11.2.7.tgz. Extracting by manifest.
+47 http cache @intlify/message-compiler@https://registry.npmmirror.com/@intlify/message-compiler/-/message-compiler-11.2.7.tgz 0ms (cache hit)
+48 silly tarball no local data for @intlify/message-compiler@https://registry.npmmirror.com/@intlify/message-compiler/-/message-compiler-11.2.7.tgz. Extracting by manifest.
+49 http cache @intlify/core-base@https://registry.npmmirror.com/@intlify/core-base/-/core-base-11.2.7.tgz 0ms (cache hit)
+50 http cache @intlify/shared@https://registry.npmmirror.com/@intlify/shared/-/shared-11.2.7.tgz 0ms (cache hit)
+51 silly tarball no local data for @intlify/core-base@https://registry.npmmirror.com/@intlify/core-base/-/core-base-11.2.7.tgz. Extracting by manifest.
+52 silly tarball no local data for @intlify/shared@https://registry.npmmirror.com/@intlify/shared/-/shared-11.2.7.tgz. Extracting by manifest.
+53 http fetch POST 404 https://registry.npmmirror.com/-/npm/v1/security/advisories/bulk 13ms
+54 verbose audit error HttpErrorGeneral: 404 Not Found - POST https://registry.npmmirror.com/-/npm/v1/security/advisories/bulk - [NOT_IMPLEMENTED] /-/npm/v1/security/* not implemented yet
+54 verbose audit error     at D:\20248\nodejs\node_modules\npm\node_modules\npm-registry-fetch\lib\check-response.js:103:15
+54 verbose audit error     at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+54 verbose audit error     at async #getReport (D:\20248\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\audit-report.js:275:19)
+54 verbose audit error     at async AuditReport.run (D:\20248\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\audit-report.js:100:19) {
+54 verbose audit error   headers: [Object: null prototype] {
+54 verbose audit error     server: [ 'Tengine' ],
+54 verbose audit error     date: [ 'Mon, 29 Dec 2025 15:15:16 GMT' ],
+54 verbose audit error     'content-type': [ 'application/json' ],
+54 verbose audit error     'transfer-encoding': [ 'chunked' ],
+54 verbose audit error     connection: [ 'keep-alive' ],
+54 verbose audit error     'strict-transport-security': [ 'max-age=5184000' ],
+54 verbose audit error     via: [ 'kunlun4.cn7036[,404666]' ],
+54 verbose audit error     'timing-allow-origin': [ '*' ],
+54 verbose audit error     eagleid: [ 'da620c9817670213166101639e' ],
+54 verbose audit error     'x-fetch-attempts': [ '1' ]
+54 verbose audit error   },
+54 verbose audit error   statusCode: 404,
+54 verbose audit error   code: 'E404',
+54 verbose audit error   method: 'POST',
+54 verbose audit error   uri: 'https://registry.npmmirror.com/-/npm/v1/security/advisories/bulk',
+54 verbose audit error   body: {
+54 verbose audit error     error: '[NOT_IMPLEMENTED] /-/npm/v1/security/* not implemented yet'
+54 verbose audit error   },
+54 verbose audit error   pkgid: undefined
+54 verbose audit error }
+55 silly audit error [object Object]
+56 silly audit report null
+57 http fetch GET 200 https://cdn.npmmirror.com/packages/vue-i18n/11.2.7/vue-i18n-11.2.7.tgz 471ms (cache miss)
+58 http fetch GET 200 https://cdn.npmmirror.com/packages/%40intlify/shared/11.2.7/shared-11.2.7.tgz 659ms (cache miss)
+59 http fetch GET 200 https://cdn.npmmirror.com/packages/%40intlify/message-compiler/11.2.7/message-compiler-11.2.7.tgz 687ms (cache miss)
+60 http fetch GET 200 https://cdn.npmmirror.com/packages/%40intlify/core-base/11.2.7/core-base-11.2.7.tgz 691ms (cache miss)
+61 silly ADD node_modules/@intlify/message-compiler
+62 silly ADD node_modules/@intlify/shared
+63 silly ADD node_modules/@intlify/core-base
+64 silly ADD node_modules/vue-i18n
+65 verbose cwd C:\Users\48626\Desktop\mo\second-hand-trading-main\222\frontend
+66 verbose os Windows_NT 10.0.26200
+67 verbose node v24.12.0
+68 verbose npm  v11.6.2
+69 verbose exit 0
+70 info ok
