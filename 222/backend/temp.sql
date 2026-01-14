@@ -1,0 +1,1 @@
+INSERT INTO product (seller_id, name, description, price, category_id, \condition\, images, thumbnail, location, status, audit_status, view_count, unread_comment) VALUES (2, 'Hat', 'Black cap', 35.00, 5, 'New', '/image/33722168_125603285126_2.jpg', '/image/33722168_125603285126_2.jpg', 'Playground', 1, 1, 0, 0); 
