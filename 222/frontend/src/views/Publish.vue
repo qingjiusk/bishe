@@ -42,10 +42,15 @@
         <el-form-item :label="t('publish.images')" prop="images">
           <el-upload
             v-model:file-list="fileList"
-            action="#"
+            action="/api/file/upload"
             list-type="picture-card"
-            :auto-upload="false"
+            :auto-upload="true"
             :limit="5"
+            :on-success="handleUploadSuccess"
+            :on-error="handleUploadError"
+            :before-upload="beforeUpload"
+            :on-remove="handleRemove"
+            name="files"
           >
             <el-icon><Plus /></el-icon>
           </el-upload>
@@ -76,6 +81,7 @@ const productFormRef = ref(null)
 const loading = ref(false)
 const categories = ref([])
 const fileList = ref([])
+const uploadedUrls = ref([])
 
 const productForm = reactive({
   name: '',
@@ -106,27 +112,70 @@ const loadCategories = async () => {
   }
 }
 
+// 上传前的验证
+const beforeUpload = (file) => {
+  const isImage = file.type.startsWith('image/')
+  const isLt10M = file.size / 1024 / 1024 < 10
+
+  if (!isImage) {
+    ElMessage.error('只能上传图片文件!')
+    return false
+  }
+  if (!isLt10M) {
+    ElMessage.error('图片大小不能超过 10MB!')
+    return false
+  }
+  return true
+}
+
+// 上传成功回调
+const handleUploadSuccess = (response, file, fileList) => {
+  if (response.code === 200 && response.data) {
+    // 后端返回的是数组，取第一个元素
+    if (Array.isArray(response.data) && response.data.length > 0) {
+      uploadedUrls.value.push(response.data[0])
+    }
+    ElMessage.success('图片上传成功')
+  } else {
+    ElMessage.error(response.message || '图片上传失败')
+  }
+}
+
+// 上传失败回调
+const handleUploadError = (error, file, fileList) => {
+  ElMessage.error('图片上传失败: ' + error.message)
+}
+
+// 移除文件
+const handleRemove = (file, fileList) => {
+  // 从 uploadedUrls 中移除对应的 URL
+  if (file.response && file.response.code === 200 && file.response.data) {
+    const url = Array.isArray(file.response.data) ? file.response.data[0] : file.response.data
+    uploadedUrls.value = uploadedUrls.value.filter(item => item !== url)
+  }
+}
+
 const handleSubmit = async () => {
   const valid = await productFormRef.value.validate()
   if (!valid) return
 
-  if (fileList.value.length === 0) {
+  if (uploadedUrls.value.length === 0) {
     ElMessage.warning('请至少上传一张商品图片')
     return
   }
 
   loading.value = true
   try {
-    // 模拟图片上传，实际项目中需要上传到服务器
-    const images = fileList.value.map(file => URL.createObjectURL(file.raw)).join(',')
-    productForm.images = images
-    productForm.thumbnail = fileList.value[0].url || URL.createObjectURL(fileList.value[0].raw)
+    // 使用真实上传的图片URL
+    productForm.images = uploadedUrls.value.join(',')
+    productForm.thumbnail = uploadedUrls.value[0]
 
     await publishProduct(productForm)
     ElMessage.success(t('publish.publishSuccess'))
     router.push('/my-products')
   } catch (error) {
     console.error('发布失败:', error)
+    ElMessage.error(error.response?.data?.message || '发布失败')
   } finally {
     loading.value = false
   }
@@ -135,6 +184,7 @@ const handleSubmit = async () => {
 const handleReset = () => {
   productFormRef.value.resetFields()
   fileList.value = []
+  uploadedUrls.value = []
 }
 
 onMounted(() => {

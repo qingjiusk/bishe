@@ -3,6 +3,18 @@
     <h2>商品审核</h2>
     <el-table :data="products" v-loading="loading" border>
       <el-table-column prop="id" label="ID" width="80" />
+      <el-table-column label="商品图片" width="120">
+        <template #default="{ row }">
+          <el-image
+            v-if="row.thumbnail"
+            :src="getImageUrl(row.thumbnail)"
+            :preview-src-list="getImageList(row.images)"
+            fit="cover"
+            style="width: 80px; height: 80px; border-radius: 4px;"
+          />
+          <span v-else>无图片</span>
+        </template>
+      </el-table-column>
       <el-table-column prop="name" label="商品名称" />
       <el-table-column prop="price" label="价格" width="100" />
       <el-table-column prop="createTime" label="发布时间" width="180" />
@@ -42,6 +54,20 @@ const getStatusType = (status) => {
 const getStatusText = (status) => {
   const texts = { 0: '待审核', 1: '通过', 2: '拒绝' }
   return texts[status] || '未知'
+}
+
+const getImageUrl = (thumbnail) => {
+  if (!thumbnail) return ''
+  if (thumbnail.startsWith('http')) return thumbnail
+  return `/api${thumbnail}`
+}
+
+const getImageList = (images) => {
+  if (!images) return []
+  return images.split(',').map(img => {
+    if (img.startsWith('http')) return img
+    return `/api${img}`
+  })
 }
 
 const fetchAuditProducts = async () => {
