@@ -23,14 +23,24 @@
             </div>
             <div class="order-total">
               <div>{{ t('order.totalAmount') }}: ¥{{ order.totalAmount }}</div>
-              <el-button
-                v-if="order.status === 2"
-                type="primary"
-                size="small"
-                @click="confirmReceive(order.id)"
-              >
-                {{ t('order.confirmReceive') }}
-              </el-button>
+              <div class="order-actions">
+                <el-button
+                  v-if="order.status === 1"
+                  type="warning"
+                  size="small"
+                  @click="handlePay(order.orderNo)"
+                >
+                  {{ t('payment.pay') }}
+                </el-button>
+                <el-button
+                  v-if="order.status === 2"
+                  type="primary"
+                  size="small"
+                  @click="confirmReceive(order.id)"
+                >
+                  {{ t('order.confirmReceive') }}
+                </el-button>
+              </div>
             </div>
           </div>
         </el-card>
@@ -41,12 +51,14 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useUserStore } from '@/stores/user'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { getBuyerOrders, confirmReceive as confirmReceiveApi } from '@/api/order'
 
 const { t } = useI18n()
+const router = useRouter()
 const userStore = useUserStore()
 const activeTab = ref('')
 const loading = ref(false)
@@ -81,6 +93,10 @@ const getStatusText = (status) => {
     3: t('order.status3')
   }
   return texts[status] || '未知'
+}
+
+const handlePay = (orderNo) => {
+  router.push({ name: 'PayPage', query: { orderNo } })
 }
 
 const confirmReceive = async (orderId) => {

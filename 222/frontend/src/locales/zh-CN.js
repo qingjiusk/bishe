@@ -126,7 +126,14 @@ export default {
     loadOrdersFailed: '加载订单失败',
     status1: '待发货',
     status2: '已发货',
-    status3: '已收货'
+    status3: '已收货',
+    deliveryType: '配送方式',
+    pickup: '当面自取',
+    delivery: '校内配送',
+    address: '收货地址',
+    addressPlaceholder: '请输入收货地址或见面地点',
+    createSuccess: '下单成功，即将跳转支付',
+    createFailed: '下单失败'
   },
   favorite: {
     title: '我的收藏',
@@ -233,6 +240,18 @@ export default {
     keyword: '关键词',
     noResults: '没有找到相关商品',
     searchFailed: '搜索失败'
+  },
+  payment: {
+    pay: '去支付',
+    payTitle: '模拟支付',
+    checking: '正在查询支付结果...',
+    success: '支付成功',
+    fail: '支付失败',
+    retryHint: '您可以在订单列表中重新发起支付',
+    viewOrder: '查看订单',
+    noOrder: '缺少订单号',
+    payFailed: '支付请求失败',
+    loadFailed: '加载支付信息失败'
   },
   forum: {
     navTitle: '校园论坛',

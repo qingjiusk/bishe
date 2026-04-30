@@ -24,9 +24,10 @@ public class OrdersController {
     @PostMapping("/create")
     public Result<Orders> createOrder(@RequestHeader("Authorization") String token, @RequestBody Map<String, Object> params) {
         Long userId = jwtUtil.getUserIdFromToken(token);
-        Long addressId = Long.valueOf(params.get("addressId").toString());
-        Integer deliveryType = Integer.valueOf(params.get("deliveryType").toString());
-        Orders order = ordersService.createOrder(userId, addressId, deliveryType);
+        Long addressId = params.get("addressId") != null ? Long.valueOf(params.get("addressId").toString()) : null;
+        Integer deliveryType = params.get("deliveryType") != null ? Integer.valueOf(params.get("deliveryType").toString()) : 1;
+        String addressText = params.get("address") != null ? params.get("address").toString() : null;
+        Orders order = ordersService.createOrder(userId, addressId, deliveryType, addressText);
         return Result.success("下单成功", order);
     }
     

@@ -77,6 +77,12 @@ const routes = [
         path: 'forum/:id',
         name: 'ForumDetail',
         component: () => import('@/views/ForumDetail.vue')
+      },
+      {
+        path: 'pay',
+        name: 'PayPage',
+        component: () => import('@/views/PayPage.vue'),
+        meta: { requiresAuth: true }
       }
     ]
   },
@@ -89,6 +95,11 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: () => import('@/views/Register.vue')
+  },
+  {
+    path: '/payment-result',
+    name: 'PaymentResult',
+    component: () => import('@/views/PaymentResult.vue')
   },
   {
     path: '/admin',

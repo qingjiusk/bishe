@@ -33,18 +33,24 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
     
     @Override
     @Transactional
-    public Orders createOrder(Long userId, Long addressId, Integer deliveryType) {
+    public Orders createOrder(Long userId, Long addressId, Integer deliveryType, String addressText) {
         QueryWrapper<Cart> cartWrapper = new QueryWrapper<>();
         cartWrapper.eq("user_id", userId);
         List<Cart> cartList = cartMapper.selectList(cartWrapper);
-        
+
         if (cartList.isEmpty()) {
             throw new RuntimeException("购物车为空");
         }
-        
-        Address address = addressMapper.selectById(addressId);
-        if (address == null) {
-            throw new RuntimeException("收货地址不存在");
+
+        String addressStr;
+        if (addressId != null) {
+            Address address = addressMapper.selectById(addressId);
+            if (address == null) {
+                throw new RuntimeException("收货地址不存在");
+            }
+            addressStr = address.getProvince() + address.getCity() + address.getDistrict() + address.getDetailAddress();
+        } else {
+            addressStr = addressText != null ? addressText : "校内自取";
         }
         
         String orderNo = "ORD" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS"));
@@ -67,17 +73,19 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
         Orders order = new Orders();
         order.setOrderNo(orderNo);
         order.setBuyerId(userId);
+        order.setSellerId(productMapper.selectById(cartList.get(0).getProductId()).getSellerId());
         order.setTotalAmount(totalAmount);
         order.setDeliveryType(deliveryType);
         order.setDeliveryFee(deliveryFee);
         order.setStatus(1);
-        order.setAddress(address.getProvince() + address.getCity() + address.getDistrict() + address.getDetailAddress());
-        order.setPaymentMethod("线下支付");
+        order.setAddress(addressStr);
+        order.setPaymentMethod("支付宝");
         save(order);
-        
+
+        boolean firstItem = true;
         for (Cart cart : cartList) {
             Product product = productMapper.selectById(cart.getProductId());
-            
+
             OrderItem orderItem = new OrderItem();
             orderItem.setOrderId(order.getId());
             orderItem.setProductId(product.getId());
@@ -86,10 +94,7 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
             orderItem.setPrice(product.getPrice());
             orderItem.setQuantity(cart.getQuantity());
             orderItemMapper.insert(orderItem);
-            
-            order.setSellerId(product.getSellerId());
-            updateById(order);
-            
+
             product.setStatus(2);
             productMapper.updateById(product);
         }

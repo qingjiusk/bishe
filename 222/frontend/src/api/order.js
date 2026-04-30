@@ -1,7 +1,7 @@
 import request from './request'
 
-export const createOrder = (addressId, deliveryType) => {
-  return request.post('/order/create', { addressId, deliveryType })
+export const createOrder = (addressId, deliveryType, address = null) => {
+  return request.post('/order/create', { addressId, deliveryType, address })
 }
 
 export const getBuyerOrders = (status, page = 1, size = 10) => {

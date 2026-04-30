@@ -126,7 +126,14 @@
     loadOrdersFailed: 'Failed to load orders',
     status1: 'Pending',
     status2: 'Shipped',
-    status3: 'Received'
+    status3: 'Received',
+    deliveryType: 'Delivery Type',
+    pickup: 'Pick Up',
+    delivery: 'Campus Delivery',
+    address: 'Address',
+    addressPlaceholder: 'Enter address or meeting location',
+    createSuccess: 'Order created, redirecting to payment',
+    createFailed: 'Order creation failed'
   },
   favorite: {
     title: 'My Favorites',
@@ -233,6 +240,18 @@
     keyword: 'Keyword',
     noResults: 'No products found',
     searchFailed: 'Search failed'
+  },
+  payment: {
+    pay: 'Pay Now',
+    payTitle: 'Simulated Payment',
+    checking: 'Checking payment result...',
+    success: 'Payment Successful',
+    fail: 'Payment Failed',
+    retryHint: 'You can retry payment from the order list',
+    viewOrder: 'View Order',
+    noOrder: 'Missing order number',
+    payFailed: 'Payment request failed',
+    loadFailed: 'Failed to load payment info'
   },
   forum: {
     navTitle: 'Campus Forum',
