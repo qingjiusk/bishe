@@ -81,6 +81,10 @@
             <el-menu-item index="/category/4">{{ t('category.sports') }}</el-menu-item>
             <el-menu-item index="/category/5">{{ t('category.clothing') }}</el-menu-item>
             <el-menu-item index="/category/6">{{ t('category.other') }}</el-menu-item>
+            <el-menu-item index="/forum" class="forum-nav-item">
+              <el-icon><ChatDotRound /></el-icon>
+              {{ t('forum.navTitle') }}
+            </el-menu-item>
           </el-menu>
         </el-aside>
         <el-main class="main">
@@ -96,7 +100,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useUserStore } from '@/stores/user'
-import { Shop, Search, ShoppingCart, Document, Star, Plus, User, SwitchButton } from '@element-plus/icons-vue'
+import { Shop, Search, ShoppingCart, Document, Star, Plus, User, SwitchButton, ChatDotRound } from '@element-plus/icons-vue'
 import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
 
 const router = useRouter()
@@ -174,6 +178,12 @@ const handleLogout = () => {
 .aside {
   background-color: #f5f5f5;
   padding: 20px 0;
+}
+
+.forum-nav-item {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 8px;
+  padding-top: 8px;
 }
 
 .main {

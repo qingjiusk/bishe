@@ -9,11 +9,14 @@
     profile: 'Profile',
     publish: 'Publish',
     myProducts: 'My Products',
+    forum: 'Forum',
     logout: 'Logout',
     login: 'Login',
     register: 'Register',
     language: 'Language',
-    loading: 'Loading...'
+    loading: 'Loading...',
+    back: 'Back',
+    cancel: 'Cancel'
   },
   home: {
     title: 'Latest Products',
@@ -230,5 +233,30 @@
     keyword: 'Keyword',
     noResults: 'No products found',
     searchFailed: 'Search failed'
+  },
+  forum: {
+    navTitle: 'Campus Forum',
+    title: 'Campus Forum',
+    createPost: 'New Post',
+    all: 'All',
+    chat: 'Chat',
+    help: 'Help',
+    trade: 'Trade',
+    activity: 'Events',
+    category: 'Category',
+    postTitle: 'Title',
+    content: 'Content',
+    publish: 'Post',
+    publishSuccess: 'Post published',
+    publishFailed: 'Publish failed',
+    noPosts: 'No posts yet',
+    postNotFound: 'Post not found',
+    replies: 'Replies',
+    reply: 'Reply',
+    replyPlaceholder: 'Write a reply...',
+    replySuccess: 'Reply posted',
+    replyFailed: 'Reply failed',
+    pleaseLogin: 'Please login to post',
+    loadFailed: 'Failed to load posts'
   }
 };

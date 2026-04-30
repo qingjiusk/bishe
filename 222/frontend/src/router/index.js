@@ -61,6 +61,22 @@ const routes = [
         name: 'MyProducts',
         component: () => import('@/views/MyProducts.vue'),
         meta: { requiresAuth: true }
+      },
+      {
+        path: 'forum',
+        name: 'Forum',
+        component: () => import('@/views/Forum.vue')
+      },
+      {
+        path: 'forum/create',
+        name: 'ForumCreate',
+        component: () => import('@/views/ForumCreate.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'forum/:id',
+        name: 'ForumDetail',
+        component: () => import('@/views/ForumDetail.vue')
       }
     ]
   },

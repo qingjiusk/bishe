@@ -9,11 +9,14 @@ export default {
     profile: '个人中心',
     publish: '发布商品',
     myProducts: '我发布的商品',
+    forum: '论坛',
     logout: '退出登录',
     login: '登录',
     register: '注册',
     language: '语言',
-    loading: '加载中...'
+    loading: '加载中...',
+    back: '返回',
+    cancel: '取消'
   },
   home: {
     title: '最新商品',
@@ -230,5 +233,30 @@ export default {
     keyword: '关键词',
     noResults: '没有找到相关商品',
     searchFailed: '搜索失败'
+  },
+  forum: {
+    navTitle: '校园论坛',
+    title: '校园论坛',
+    createPost: '发帖',
+    all: '全部',
+    chat: '交流',
+    help: '求助',
+    trade: '交易',
+    activity: '活动',
+    category: '帖子分类',
+    postTitle: '帖子标题',
+    content: '帖子内容',
+    publish: '发布帖子',
+    publishSuccess: '发帖成功',
+    publishFailed: '发帖失败',
+    noPosts: '暂无帖子，来发第一个吧',
+    postNotFound: '帖子不存在或已被删除',
+    replies: '回复',
+    reply: '发表回复',
+    replyPlaceholder: '写下你的回复...',
+    replySuccess: '回复成功',
+    replyFailed: '回复失败',
+    pleaseLogin: '请先登录再发帖',
+    loadFailed: '加载帖子失败'
   }
 }

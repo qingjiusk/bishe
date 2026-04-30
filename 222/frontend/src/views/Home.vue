@@ -1,5 +1,17 @@
 <template>
   <div class="home">
+    <!-- 轮播图 -->
+    <el-carousel :interval="4000" type="card" height="260px" class="home-carousel">
+      <el-carousel-item v-for="(banner, index) in banners" :key="index">
+        <div class="banner-slide" :style="{ background: banner.bg }">
+          <div class="banner-content">
+            <h2 class="banner-title">{{ banner.title }}</h2>
+            <p class="banner-desc">{{ banner.description }}</p>
+          </div>
+        </div>
+      </el-carousel-item>
+    </el-carousel>
+
     <h2>{{ t('home.latestProducts') }}</h2>
     <el-row :gutter="20" v-loading="loading">
       <el-col :xs="24" :sm="12" :md="8" :lg="6" v-for="product in products" :key="product.id">
@@ -37,6 +49,12 @@ import { getProductList } from '@/api/product'
 
 const router = useRouter()
 const { t } = useI18n()
+const banners = ref([
+  { title: '校园闲置 · 物尽其用', description: '教材、数码、生活用品，发现身边的二手好物', bg: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' },
+  { title: '安全交易 · 实名保障', description: '校园认证用户，当面交易更放心', bg: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' },
+  { title: '绿色校园 · 循环经济', description: '让闲置流动起来，共建可持续校园', bg: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }
+])
+
 const loading = ref(false)
 const products = ref([])
 const currentPage = ref(1)
@@ -72,6 +90,39 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.home-carousel {
+  margin-bottom: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.banner-slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.banner-content {
+  text-align: center;
+  color: #fff;
+}
+
+.banner-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.banner-desc {
+  font-size: 16px;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
 .home h2 {
   margin-bottom: 20px;
   color: #333;
