@@ -136,4 +136,26 @@ public class AdminController {
         boolean success = ordersService.confirmReceive(id);
         return success ? Result.success("确认成功") : Result.error("确认失败");
     }
+
+    @GetMapping("/refunds")
+    public Result<IPage<Orders>> getRefundOrders(
+            @RequestParam(defaultValue = "1") Integer page,
+            @RequestParam(defaultValue = "10") Integer size) {
+        Page<Orders> pageParam = new Page<>(page, size);
+        IPage<Orders> result = ordersService.getRefundOrders(pageParam);
+        return Result.success(result);
+    }
+
+    @PutMapping("/refund/{id}/approve")
+    public Result<Void> approveRefund(@PathVariable Long id) {
+        boolean success = ordersService.approveRefund(id);
+        return success ? Result.success("退款已通过") : Result.error("操作失败");
+    }
+
+    @PutMapping("/refund/{id}/reject")
+    public Result<Void> rejectRefund(@PathVariable Long id, @RequestBody Map<String, String> params) {
+        String reply = params.getOrDefault("reply", "");
+        boolean success = ordersService.rejectRefund(id, reply);
+        return success ? Result.success("退款已拒绝") : Result.error("操作失败");
+    }
 }

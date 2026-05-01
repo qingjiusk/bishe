@@ -21,4 +21,12 @@ public interface OrdersService extends IService<Orders> {
     boolean confirmReceive(Long orderId);
     
     boolean updateOrderStatus(Long orderId, Integer status);
+
+    boolean requestRefund(Long orderId, Long userId, String reason);
+
+    IPage<Orders> getRefundOrders(Page<Orders> page);
+
+    boolean approveRefund(Long orderId);
+
+    boolean rejectRefund(Long orderId, String reply);
 }

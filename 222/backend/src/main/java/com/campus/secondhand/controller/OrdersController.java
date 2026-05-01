@@ -71,4 +71,14 @@ public class OrdersController {
         boolean success = ordersService.confirmReceive(orderId);
         return success ? Result.success("确认收货成功") : Result.error("确认收货失败");
     }
+
+    @PostMapping("/{orderId}/refund")
+    public Result<Void> requestRefund(@RequestHeader("Authorization") String token,
+                                       @PathVariable Long orderId,
+                                       @RequestBody Map<String, String> params) {
+        Long userId = jwtUtil.getUserIdFromToken(token);
+        String reason = params.getOrDefault("reason", "");
+        boolean success = ordersService.requestRefund(orderId, userId, reason);
+        return success ? Result.success("退款申请已提交") : Result.error("退款申请失败");
+    }
 }

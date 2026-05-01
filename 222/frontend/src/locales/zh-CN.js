@@ -241,6 +241,18 @@ export default {
     noResults: '没有找到相关商品',
     searchFailed: '搜索失败'
   },
+  refund: {
+    request: '申请退款',
+    title: '退款申请',
+    reason: '退款原因',
+    reasonPlaceholder: '请描述退款原因',
+    submit: '提交申请',
+    success: '退款申请已提交',
+    failed: '退款申请失败',
+    pending: '退款中',
+    approved: '已退款',
+    rejected: '退款被拒'
+  },
   payment: {
     pay: '去支付',
     payTitle: '模拟支付',

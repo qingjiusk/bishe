@@ -152,4 +152,47 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
         }
         return updateById(order);
     }
+
+    @Override
+    public boolean requestRefund(Long orderId, Long userId, String reason) {
+        Orders order = getById(orderId);
+        if (order == null || !order.getBuyerId().equals(userId)) {
+            return false;
+        }
+        if (order.getRefundStatus() != null && order.getRefundStatus() == 1) {
+            return false;
+        }
+        Orders update = new Orders();
+        update.setId(orderId);
+        update.setRefundStatus(1);
+        update.setRefundReason(reason);
+        return updateById(update);
+    }
+
+    @Override
+    public IPage<Orders> getRefundOrders(Page<Orders> page) {
+        QueryWrapper<Orders> wrapper = new QueryWrapper<>();
+        wrapper.eq("refund_status", 1);
+        wrapper.orderByDesc("create_time");
+        return page(page, wrapper);
+    }
+
+    @Override
+    public boolean approveRefund(Long orderId) {
+        Orders update = new Orders();
+        update.setId(orderId);
+        update.setRefundStatus(2);
+        update.setRefundTime(LocalDateTime.now());
+        update.setRefundReply("退款已处理");
+        return updateById(update);
+    }
+
+    @Override
+    public boolean rejectRefund(Long orderId, String reply) {
+        Orders update = new Orders();
+        update.setId(orderId);
+        update.setRefundStatus(3);
+        update.setRefundReply(reply);
+        return updateById(update);
+    }
 }

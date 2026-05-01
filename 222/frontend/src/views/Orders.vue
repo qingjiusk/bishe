@@ -40,12 +40,57 @@
                 >
                   {{ t('order.confirmReceive') }}
                 </el-button>
+                <el-button
+                  v-if="order.refundStatus === 1"
+                  type="info"
+                  size="small"
+                  disabled
+                >
+                  {{ t('refund.pending') }}
+                </el-button>
+                <el-button
+                  v-if="order.refundStatus === 2"
+                  type="success"
+                  size="small"
+                  disabled
+                >
+                  {{ t('refund.approved') }}
+                </el-button>
+                <el-button
+                  v-if="order.refundStatus === 3"
+                  type="danger"
+                  size="small"
+                  disabled
+                >
+                  {{ t('refund.rejected') }}
+                </el-button>
+                <el-button
+                  v-if="canRefund(order)"
+                  type="danger"
+                  size="small"
+                  plain
+                  @click="showRefundDialog(order)"
+                >
+                  {{ t('refund.request') }}
+                </el-button>
               </div>
             </div>
           </div>
         </el-card>
       </div>
     </div>
+
+    <el-dialog v-model="refundVisible" :title="t('refund.title')" width="450px">
+      <el-form :model="refundForm">
+        <el-form-item :label="t('refund.reason')">
+          <el-input v-model="refundForm.reason" type="textarea" :rows="4" :placeholder="t('refund.reasonPlaceholder')" />
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <el-button @click="refundVisible = false">{{ t('common.cancel') }}</el-button>
+        <el-button type="danger" @click="submitRefund" :loading="refunding">{{ t('refund.submit') }}</el-button>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -55,7 +100,7 @@ import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useUserStore } from '@/stores/user'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { getBuyerOrders, confirmReceive as confirmReceiveApi } from '@/api/order'
+import { getBuyerOrders, confirmReceive as confirmReceiveApi, requestRefund } from '@/api/order'
 
 const { t } = useI18n()
 const router = useRouter()
@@ -93,6 +138,36 @@ const getStatusText = (status) => {
     3: t('order.status3')
   }
   return texts[status] || '未知'
+}
+
+const refundVisible = ref(false)
+const refunding = ref(false)
+const refundForm = ref({ orderId: null, reason: '' })
+const refundOrderId = ref(null)
+
+const canRefund = (order) => {
+  const status = order.refundStatus
+  return (order.status === 1 || order.status === 2) && (status === 0 || status === null)
+}
+
+const showRefundDialog = (order) => {
+  refundOrderId.value = order.id
+  refundForm.value.reason = ''
+  refundVisible.value = true
+}
+
+const submitRefund = async () => {
+  refunding.value = true
+  try {
+    await requestRefund(refundOrderId.value, refundForm.value.reason)
+    ElMessage.success(t('refund.success'))
+    refundVisible.value = false
+    loadOrders()
+  } catch (e) {
+    ElMessage.error(t('refund.failed'))
+  } finally {
+    refunding.value = false
+  }
 }
 
 const handlePay = (orderNo) => {

@@ -36,4 +36,12 @@ public class Orders {
     private LocalDateTime shipTime;
     
     private LocalDateTime receiveTime;
+
+    private Integer refundStatus;
+
+    private String refundReason;
+
+    private LocalDateTime refundTime;
+
+    private String refundReply;
 }

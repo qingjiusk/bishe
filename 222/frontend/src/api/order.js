@@ -19,3 +19,19 @@ export const getOrderDetail = (orderNo) => {
 export const confirmReceive = (orderId) => {
   return request.put(`/order/${orderId}/confirm`)
 }
+
+export const requestRefund = (orderId, reason) => {
+  return request.post(`/order/${orderId}/refund`, { reason })
+}
+
+export const getRefundOrders = (page = 1, size = 10) => {
+  return request.get('/admin/refunds', { params: { page, size } })
+}
+
+export const approveRefund = (orderId) => {
+  return request.put(`/admin/refund/${orderId}/approve`)
+}
+
+export const rejectRefund = (orderId, reply) => {
+  return request.put(`/admin/refund/${orderId}/reject`, { reply })
+}
