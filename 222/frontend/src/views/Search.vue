@@ -18,6 +18,7 @@
         </el-card>
       </el-col>
     </el-row>
+    <el-empty v-if="!loading && products.length === 0" :description="t('search.noResults')" />
     <el-pagination
       v-model:current-page="currentPage"
       :page-size="pageSize"
